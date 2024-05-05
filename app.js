@@ -19,8 +19,8 @@ const app = express();
 app.set("trust proxy", true);
 
 const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  origin: "https://prmanagementfe.onrender.com",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   optionSuccessStatus: 200,
 };
