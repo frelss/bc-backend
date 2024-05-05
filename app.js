@@ -16,6 +16,14 @@ const xss = require("xss-clean");
 dotenv.config({ path: "./configure.env" });
 
 const app = express();
+app.set("trust proxy", true);
+
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  optionSuccessStatus: 200,
+};
 
 //majd vissza rakni
 let limiter = rateLimit({
@@ -27,7 +35,8 @@ let limiter = rateLimit({
 
 app.use(helmet());
 app.use("/api", limiter);
-app.use(cors());
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 //10kb of data max
 app.use(express.json({ limit: "10kb" }));
 
