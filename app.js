@@ -26,7 +26,7 @@ const corsOptions = {
 };
 
 let limiter = rateLimit({
-  max: 2000,
+  max: 20000000000000000,
   windowMs: 60 * 60 * 1000,
   message:
     "We have recieved too many request from this IP. Please try again after one hour.",
